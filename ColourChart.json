@@ -1,0 +1,13 @@
+[{
+  "Name": "Blue",
+  "Description": "Non-Test"
+},
+{
+  "Name": "Red",
+  "Description": "Test projects should not be inherited"
+},
+{
+  "Name": "Purple",
+  "ComponentColours": ["Red", "Blue"]
+}
+]

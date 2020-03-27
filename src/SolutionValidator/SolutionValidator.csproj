@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>solution-validator</ToolCommandName>
+    <PackageId>SolutionValidator</PackageId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Bulldog" Version="0.3.9" />
+    <PackageReference Include="Microsoft.Build" Version="16.8.0" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="16.8.0" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.8.0" />
+    <PackageReference Include="Microsoft.Build.NuGetSdkResolver" Version="5.11.0-rc.10" />
+    <PackageReference Include="NuGet.Commands" Version="6.4.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SlnUtils\SlnUtils.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+    <None Update="SdkResolvers\Microsoft.Build.NuGetSdkResolver\Microsoft.Build.NuGetSdkResolver.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

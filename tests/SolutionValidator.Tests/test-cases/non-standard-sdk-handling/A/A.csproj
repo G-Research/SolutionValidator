@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.Build.NoTargets/1.0.40">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.NoTargets" Version="1.0.40" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../B/B.csproj" />
+  </ItemGroup>
+</Project>
