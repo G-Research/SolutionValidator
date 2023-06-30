@@ -15,7 +15,7 @@
   <ItemGroup>
     <!-- Use GitVersioning for nuget packages -->
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="All" />
-    <PackageReference Include="NuGetPackageChecker" Version="0.1.20" PrivateAssets="All" />
+    <PackageReference Include="NuGetPackageChecker" Version="0.1.4" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <RequiredPackages Include="coverlet.collector" RequiredFor="Microsoft.NET.Test.Sdk" />

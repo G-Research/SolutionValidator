@@ -8,7 +8,7 @@
     <PackageId>SolutionValidator</PackageId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Bulldog" Version="0.3.9" />
+    <PackageReference Include="Bulldog" Version="0.4.2" />
     <PackageReference Include="Microsoft.Build" Version="16.8.0" />
     <PackageReference Include="Microsoft.Build.Framework" Version="16.8.0" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.8.0" />
