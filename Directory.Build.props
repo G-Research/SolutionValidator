@@ -8,9 +8,12 @@
     <PackageIcon>Solution.png</PackageIcon>
     <Colour>Blue</Colour>
     <LangVersion>9</LangVersion>
+    <Copyright>Copyright 2020-$([System.DateTime]::Now.ToString('yyyy')) G-Research Limited</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Solution.png" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath=""/>
   </ItemGroup>
   <ItemGroup>
     <!-- Use GitVersioning for nuget packages -->
