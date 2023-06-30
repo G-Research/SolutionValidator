@@ -170,7 +170,7 @@ namespace SolutionValidator
                     + 1000 * Version.Minor // From 0-9
                     + 10000 * (Version.Build == -1 ? 0 : Version.Build) // 0-9
                     + 100000 * (int)TargetPlatformIdentifier; // 0-3
-                    // TargetPlatformVersion can be added to the end if required BUT doing so will require ProjectTargetId to be adjusted to avoid overflow
+                                                              // TargetPlatformVersion can be added to the end if required BUT doing so will require ProjectTargetId to be adjusted to avoid overflow
             }
         }
 
