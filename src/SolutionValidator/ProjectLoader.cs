@@ -18,85 +18,22 @@ namespace SolutionValidator
         private readonly Dictionary<string, string> _globalProperties;
         private readonly EvaluationContext _evaluationContext;
         private readonly ProjectCollection _projectCollection;
-        private readonly ProjectLoadSettings _loadSettings;
         private readonly Dictionary<string, ProjectDetails> _projects;
         private static int _projectCount = 0;
 
         public ProjectLoader(ILogger<ProjectLoader> logger)
         {
             _logger = logger;
-            (Version sdkVersion, string sdkDirectory) = GetSdkPath();
-            _globalProperties = GetGlobalProperties(sdkVersion, sdkDirectory);
+
+            _globalProperties = new Dictionary<string, string>()
+            {
+                {"Configuration", "Release"}
+            };
             _evaluationContext = EvaluationContext.Create(EvaluationContext.SharingPolicy.Shared);
 
             _projectCollection = new ProjectCollection(_globalProperties, new[] { new LoggingProxy(_logger) }, ToolsetDefinitionLocations.Default);
 
-            Toolset toolSet = new Toolset("Current", sdkDirectory, _projectCollection, sdkDirectory);
-
-            _projectCollection.AddToolset(toolSet);
-            _loadSettings = ProjectLoadSettings.RejectCircularImports;
             _projects = new Dictionary<string, ProjectDetails>();
-        }
-
-        public static Dictionary<string, string> GetGlobalProperties(Version sdkVersion, string sdkDirectory)
-        {
-            var globalProperties = new Dictionary<string, string>()
-            {
-                {"RoslynTargetsPath", Path.Combine(sdkDirectory, "Roslyn")},
-                {"MSBuildSDKsPath", Path.Combine(sdkDirectory, "Sdks")},
-                {"MSBuildExtensionsPath", sdkDirectory},
-                {"Configuration", "Release"}
-            };
-
-            return globalProperties;
-        }
-
-        private (Version SdkVersion, string SdkPath) GetSdkPath()
-        {
-            using var process = Process.Start(new ProcessStartInfo("dotnet", "--info")
-            {
-                RedirectStandardOutput = true,
-                RedirectStandardError = false,
-                CreateNoWindow = true,
-                UseShellExecute = false
-            });
-
-            try
-            {
-                string path = null;
-                Version version = null;
-                while (!process.StandardOutput.EndOfStream)
-                {
-                    var line = process.StandardOutput.ReadLine();
-                    if (line.Contains(" Version: ") && line.TrimStart().StartsWith("Version: "))
-                    {
-                        if (!Version.TryParse(line.Replace("Version: ", "").Trim(), out version))
-                        {
-                            new ApplicationException("Unable to parse SDK version from dotnet --info.");
-                        }
-                    }
-                    else if (line.Contains("Base Path"))
-                    {
-                        if (version == null)
-                        {
-                            new ApplicationException("Unable to find SDK version from dotnet --info");
-                        }
-                        path = line.Replace("Base Path: ", "").Trim();
-                        _logger.LogInformation("Found SDK Path: {path}", path);
-                        return (version, path);
-                    }
-                }
-            }
-            finally
-            {
-                process.StandardOutput.ReadToEnd();
-                if (!process.WaitForExit(60 * 1000))
-                {
-                    throw new ApplicationException("Timeout waiting for dotnet process to exit");
-                }
-            }
-
-            throw new ApplicationException("Unable to find SDK path for project loading.");
         }
 
         public bool TryGetProject(string fullPath, out ProjectDetails projectDetails)
@@ -131,7 +68,9 @@ namespace SolutionValidator
                         new ProjectOptions
                         {
                             ProjectCollection = _projectCollection,
-                            LoadSettings = _loadSettings,
+                            LoadSettings = ProjectLoadSettings.IgnoreEmptyImports | ProjectLoadSettings.IgnoreInvalidImports |
+                               ProjectLoadSettings.RecordDuplicateButNotCircularImports |
+                               ProjectLoadSettings.IgnoreMissingImports,
                             EvaluationContext = _evaluationContext,
                             GlobalProperties = _globalProperties,
                         });
