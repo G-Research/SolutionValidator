@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace SolutionValidator.Tests
 {
-    public class FileSystemPathTests
+    public class FileSystemPathTests : BaseFixture
     {
         private ITestOutputHelper _testOutputHelper;
 

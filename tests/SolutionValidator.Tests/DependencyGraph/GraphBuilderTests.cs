@@ -10,7 +10,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests.DependencyGraph
 {
-    public class GraphBuilderTests
+    public class GraphBuilderTests : BaseFixture
     {
 
         [Fact]

@@ -12,7 +12,7 @@ using Xunit.Abstractions;
 
 namespace SolutionValidator.Tests.ValidateSolutions
 {
-    public class TestFrameworkValidatorTests
+    public class TestFrameworkValidatorTests : BaseFixture
     {
         private ITestOutputHelper _outputHelper;
 

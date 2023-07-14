@@ -9,7 +9,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests.DependencyGraph
 {
-    public class ColourChartTests
+    public class ColourChartTests : BaseFixture
     {
         [Fact]
         public void LoadDuplicateColour_ProducesLoadError()

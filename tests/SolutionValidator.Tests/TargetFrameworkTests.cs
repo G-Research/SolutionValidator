@@ -6,7 +6,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests
 {
-    public class TargetFrameworkTests
+    public class TargetFrameworkTests : BaseFixture
     {
         [Theory]
         [InlineData("netcoreapp3.1", new[] { "netcoreapp3.1", "net471" }, true, "netcoreapp3.1")]

@@ -8,7 +8,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests.ValidateMergedSolution
 {
-    public class MergedSolutionValidatorCommandTests
+    public class MergedSolutionValidatorCommandTests : BaseFixture
     {
         [Fact]
         public void SupersetSolution_PassesValidation_WithoutStrictValidation()
