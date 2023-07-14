@@ -15,10 +15,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Bulldog" Version="0.4.2" />
-    <PackageReference Include="Microsoft.Build" Version="16.8.0" />
-    <PackageReference Include="Microsoft.Build.Framework" Version="16.8.0" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.8.0" />
-    <PackageReference Include="Microsoft.Build.NuGetSdkResolver" Version="5.11.0-rc.10" />
+    <PackageReference Include="Microsoft.Build" Version="16.8.0" ExcludeAssets="runtime"/>
+    <PackageReference Include="Microsoft.Build.Framework" Version="16.8.0" ExcludeAssets="runtime"/>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.8.0" ExcludeAssets="runtime"/>
+    <PackageReference Include="Microsoft.Build.NuGetSdkResolver" Version="5.11.0-rc.10" ExcludeAssets="runtime" />
+	<PackageReference Include="Microsoft.Build.Locator" Version="1.5.5" />
     <PackageReference Include="NuGet.Commands" Version="6.4.0" />
     <PackageReference Include="System.Collections.Immutable" Version="1.7.0" />
   </ItemGroup>

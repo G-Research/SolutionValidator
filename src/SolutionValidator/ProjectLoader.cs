@@ -48,20 +48,6 @@ namespace SolutionValidator
                 {"Configuration", "Release"}
             };
 
-            if (sdkVersion >= new Version(6, 0))
-            {
-#if NET6_0_OR_GREATER
-                Environment.SetEnvironmentVariable("MSBUILDADDITIONALSDKRESOLVERSFOLDER", Path.Combine(sdkDirectory, "SdkResolvers"));
-                Environment.SetEnvironmentVariable("MSBuildEnableWorkloadResolver", "true");
-#else
-                Environment.SetEnvironmentVariable("MSBuildEnableWorkloadResolver", "false");
-#endif
-            }
-
-            Environment.SetEnvironmentVariable("MSBuildSDKsPath", Path.Combine(sdkDirectory, "Sdks"));
-            Environment.SetEnvironmentVariable("MSBuildExtensionsPath", sdkDirectory);
-            Environment.SetEnvironmentVariable("MSBUILD_NUGET_PATH", sdkDirectory);
-            Environment.SetEnvironmentVariable("MSBuildToolsPath", sdkDirectory);
             return globalProperties;
         }
 
@@ -171,45 +157,6 @@ namespace SolutionValidator
             _projects.Add(normalisedPath, projectDetails);
 
             return loadedSuccessfully;
-        }
-
-        public List<ProjectDetails> GetProjectDetails(IEnumerable<string> projectFiles)
-        {
-            List<ProjectDetails> projects = new List<ProjectDetails>();
-            foreach (string projectFile in projectFiles)
-            {
-                if (TryGetProject(projectFile, out ProjectDetails projectDetails))
-                {
-                    projects.Add(projectDetails);
-                }
-                else
-                {
-                    _logger.LogError("Project '{projectPath}' referenced in solution does not exist.", projectFile);
-                    throw new FileNotFoundException("Project referenced in solution does not exist.", projectFile);
-                }
-            }
-
-            return projects;
-        }
-
-        // TODO: I think I would like to have a method which determines whether the set of projects is a transitive closure. Does that live here?  
-
-        public List<ProjectDetails> GetProjectsForSolution(SolutionFile solution)
-        {
-            List<ProjectDetails> projects = new List<ProjectDetails>();
-            foreach (var solutionProject in solution.GetMsBuildProjectsInSolution())
-            {
-                if (TryGetProject(solutionProject.AbsolutePath, out ProjectDetails projectDetails))
-                {
-                    projects.Add(projectDetails);
-                }
-                else
-                {
-                    _logger.LogError("Project '{projectPath}' referenced in solution does not exist.", solutionProject.AbsolutePath);
-                }
-            }
-
-            return projects;
         }
 
         public HashSet<ProjectDetails> GetTopLevelNonTestProjects(IEnumerable<FilePath> projectPaths)
