@@ -8,7 +8,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests.ValidateSolutions
 {
-    public class SolutionClosureValidatorTests
+    public class SolutionClosureValidatorTests : BaseFixture
     {
         [Fact]
         public void SolutionWithAllProjects_PassesValidation()
