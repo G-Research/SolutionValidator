@@ -4,7 +4,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests
 {
-    public class ProjectExtensionTests
+    public class ProjectExtensionTests : BaseFixture
     {
         [Theory]
         [InlineData("MyApp.Test")]

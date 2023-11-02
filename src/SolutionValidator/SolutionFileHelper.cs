@@ -16,10 +16,10 @@ namespace SolutionValidator
 
         public static Dictionary<string, (SlnProject SlnProject, FilePath FilePath)> GetProjectsInSolutionByName(this SlnFile solution)
         {
-            var projects = new Dictionary<string, (SlnProject slnProject, FilePath filePath)> ();
+            var projects = new Dictionary<string, (SlnProject slnProject, FilePath filePath)>();
             foreach (var project in solution.Projects.Where(p => p.TypeGuid != ProjectTypeGuids.SolutionFolderGuid))
             {
-                projects.Add(project.Name, new (project, FilePath.Create(solution.BaseDirectory, project.FilePath)));
+                projects.Add(project.Name, new(project, FilePath.Create(solution.BaseDirectory, project.FilePath)));
             }
 
             return projects;

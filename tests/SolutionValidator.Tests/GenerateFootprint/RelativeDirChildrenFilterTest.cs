@@ -5,7 +5,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests.GenerateFootprint
 {
-    public class RelativeDirChildrenFilterTest
+    public class RelativeDirChildrenFilterTest : BaseFixture
     {
         [Theory]
         [InlineData(0, new[] { "/foo", "/bar", "/bar/baz", "/bar", "/baz" }, false)]

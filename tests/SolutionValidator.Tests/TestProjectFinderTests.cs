@@ -8,7 +8,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests
 {
-    public class TestProjectFinderTests
+    public class TestProjectFinderTests : BaseFixture
     {
 
         [Fact]

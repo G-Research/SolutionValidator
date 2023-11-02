@@ -6,7 +6,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests
 {
-    public class SolutionFinderTests
+    public class SolutionFinderTests : BaseFixture
     {
         [Fact]
         public void CorrectlyFindSolutionsInSearchPath()

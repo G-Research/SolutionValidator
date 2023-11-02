@@ -9,7 +9,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests.ValidateSolutions
 {
-    public class LeanSolutionValidatorTests
+    public class LeanSolutionValidatorTests : BaseFixture
     {
         [Fact]
         public void SolutionWithExtraProjects_FailsValidation()

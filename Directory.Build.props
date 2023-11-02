@@ -8,14 +8,17 @@
     <PackageIcon>Solution.png</PackageIcon>
     <Colour>Blue</Colour>
     <LangVersion>9</LangVersion>
+    <Copyright>Copyright 2020-$([System.DateTime]::Now.ToString('yyyy')) G-Research Limited</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Solution.png" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath=""/>
   </ItemGroup>
   <ItemGroup>
     <!-- Use GitVersioning for nuget packages -->
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="All" />
-    <PackageReference Include="NuGetPackageChecker" Version="0.1.20" PrivateAssets="All" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.133" PrivateAssets="All" />
+    <PackageReference Include="NuGetPackageChecker" Version="0.1.4" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <RequiredPackages Include="coverlet.collector" RequiredFor="Microsoft.NET.Test.Sdk" />

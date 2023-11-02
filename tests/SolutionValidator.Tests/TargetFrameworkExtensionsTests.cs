@@ -3,7 +3,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests
 {
-    public class TargetFrameworkExtensionsTests
+    public class TargetFrameworkExtensionsTests : BaseFixture
     {
         [Theory]
         [InlineData("net471", "net471", true)]

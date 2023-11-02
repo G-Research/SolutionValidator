@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SolutionValidator.Tests.DependencyGraph
 {
-    public class ColourValueTests
+    public class ColourValueTests : BaseFixture
     {
         [Fact]
         public void ColourValues_AddTogether()

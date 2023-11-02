@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace SolutionValidator.Tests
 {
-    public class ProjectGraphBuilderTests
+    public class ProjectGraphBuilderTests : BaseFixture
     {
         private readonly ITestOutputHelper _testOutputHelper;
 
