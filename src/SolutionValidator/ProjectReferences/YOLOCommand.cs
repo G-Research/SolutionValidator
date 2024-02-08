@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using SlnUtils;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Logging;
+using SlnUtils;
 namespace SolutionValidator.ProjectReferences
 {
     internal class YoloCommand : ICommand

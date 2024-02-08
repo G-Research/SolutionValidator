@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Extensions.Logging;
 using SolutionValidator.DependencyGraph;
 using SolutionValidator.ValidateSolutions;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SolutionValidator.TrimFrameworks
 {

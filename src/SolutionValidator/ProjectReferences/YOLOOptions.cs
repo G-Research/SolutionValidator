@@ -1,6 +1,6 @@
-﻿using Bulldog;
+﻿using System.Collections.Generic;
+using Bulldog;
 using CommandLine;
-using System.Collections.Generic;
 
 namespace SolutionValidator.ProjectReferences
 {

@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.Extensions.Logging;
 using SolutionValidator.DependencyGraph;
 
