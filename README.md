@@ -122,3 +122,7 @@ dotnet solution-validator generate-footprint --code-root {code root} --input-fil
 ## Versioning
 
 Versioned using NerdBank.GitVersioning
+
+## Security
+
+Please see our [security policy](https://github.com/G-Research/SolutionValidator/blob/main/SECURITY.md) for details on reporting security vulnerabilities.
